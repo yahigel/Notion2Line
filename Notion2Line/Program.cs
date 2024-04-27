@@ -40,7 +40,7 @@ catch (Exception ex)
 }
 
 //ここからはLINE
-var lineToken = "GTKihjD8jfNyHsjibq2fZ6rI7rgQ3KGB8iB7NLQBclP";
+var lineToken = "VMltCSuTFGisLgQSIun0nrgeADuCmB47SleRwnotX5U";
 var lineClient = new LineNotifyClient(lineToken);
 
 try
