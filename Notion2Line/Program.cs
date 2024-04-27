@@ -1,11 +1,20 @@
-﻿using Notion2Line;
+﻿using Microsoft.Extensions.Configuration;
+using Notion2Line;
 using System.Globalization;
+
+IConfiguration config = new ConfigurationBuilder()
+                           .SetBasePath(Directory.GetCurrentDirectory())
+                           .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+                           .Build();
+
+// コンフィグレーション値の読み取り
+string notionSecret = config["Notion:Secret"];
+string databaseId = config["Notion:DatabaseId"];
+string lineToken = config["Line:Token"];
 
 Console.WriteLine("Start Notion to Line");
 
-string notionSecret = "secret_GlgeUKWHRddteFEecPwtU3B54wrFZBoOZsGR995n5Pz";
-string databaseId = "0965d0f824064de5b49ff8f72ed1772d";
-
+// 投稿するメッセージ
 string message = new String("");
 
 //ノーションからデータ取得してメッセージ構築
@@ -40,7 +49,6 @@ catch (Exception ex)
 }
 
 //ここからはLINE
-var lineToken = "VMltCSuTFGisLgQSIun0nrgeADuCmB47SleRwnotX5U";
 var lineClient = new LineNotifyClient(lineToken);
 
 try
