@@ -4,7 +4,7 @@ using System.Globalization;
 
 IConfiguration config = new ConfigurationBuilder()
                            .SetBasePath(Directory.GetCurrentDirectory())
-                           .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+                           .AddJsonFile("C:\\Users\\user\\source\\repos\\Notion2Line\\Notion2Line\\appsettings.json", optional: false, reloadOnChange: true)
                            .Build();
 
 // コンフィグレーション値の読み取り
@@ -33,9 +33,20 @@ try
 
         foreach (StudyThema item in resList)
         {
-            message += item.PresenterName + "さん「" + item.ResearchThemaName + "」\n";
+            string studyName = new string("");
+            if (item.PresenterName.Length > 0)
+            {
+                studyName = item.PresenterName;
+            }
+            else
+            {
+                studyName = "だれか ";
+            }
+            message += studyName + "さん「" + item.ResearchThemaName + "」\n";
         }
         message += "\nお楽しみに！";
+        message += "\n";
+        message += "\nhttps://zoom.us/j/96245057522?pwd=a04zNG5jNGs4RWN2elVJM1o2a3JPQT09";
         Console.WriteLine(message);
     }
     else
